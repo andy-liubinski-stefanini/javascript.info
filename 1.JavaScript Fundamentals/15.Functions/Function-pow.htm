@@ -1,0 +1,25 @@
+// Write a function pow(x,n) that returns x in power n. Or, in other words,
+multiplies x by itself n times and returns the result. // pow(3, 2) = 3 * 3 = 9
+// pow(3, 3) = 3 * 3 * 3 = 27 // pow(1, 100) = 1 * 1 * ...* 1 = 1
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const pow = function (x, p) {
+        return Math.pow(x, p)
+      }
+
+      let num = parseInt(
+        prompt(`What is the number you want to exponentiate: `)
+      )
+      let power = parseInt(prompt(`What is the exponentiator: `))
+      alert(`${num} to the power of ${power} is ${pow(num, power)}`)
+    </script>
+  </body>
+</html>
