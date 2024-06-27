@@ -8,11 +8,10 @@
 
 // delay(3000).then(() => alert('runs after 3 seconds'));
 
-
 function delay(ms) {
-  let promise = new Promise(res,rej) {
-    setTimeout(() => res(), ms);
-  }
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(), ms)
+  })
 }
 
-delay(3000).then(() => alert('runs after 3 seconds'));
+delay(3000).then(() => console.log('runs after 3 seconds'))
