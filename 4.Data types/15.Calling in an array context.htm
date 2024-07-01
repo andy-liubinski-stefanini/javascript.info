@@ -1,0 +1,29 @@
+<!-- // What is the result? Why?
+
+// let arr = ["a", "b"];
+
+// arr.push(function() {
+//   alert( this );
+// });
+
+// arr[2](); // ? -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = ['a', 'b']
+
+      arr.push(function () {
+        alert(this)
+      })
+
+      arr[2]() // IT WILL SHOW ARRAY AS TEXT. INCLUDING FUNCTION AS TEXT, BUT IT WILL NOT CALL THE FUNCTION. NOT POSSIBLE TO CALL A FUNCTION FROM INSIDE AN ARRAY.
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!-- Create a function readNumber which prompts for a number until the visitor enters a valid numeric value.
+
+The resulting value must be returned as a number.
+
+The visitor can also stop the process by entering an empty line or pressing “CANCEL”. In that case, the function should return null. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const readNumber = function () {
+        let supposedlyNumber = prompt(`Enter a number; `)
+        if (supposedlyNumber === null || supposedlyNumber === '') {
+          return null
+        }
+        supposedlyNumber = +supposedlyNumber
+        if (!isNaN(supposedlyNumber)) {
+          return supposedlyNumber
+        } else {
+          return readNumber()
+        }
+      }
+      alert(readNumber())
+    </script>
+  </body>
+</html>
