@@ -1,0 +1,71 @@
+<!-- https://javascript.info/task/debounce -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form with Dynamic Button Text</title>
+    <style>
+      /* Minimal CSS for layout */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      input,
+      button {
+        display: block;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="form">
+      <div class="form-group">
+        <label for="input1">Input 1:</label>
+        <input type="text" id="input1" name="input1" />
+        <button type="button" id="button1">Button 1</button>
+      </div>
+      <div class="form-group">
+        <label for="input2">Input 2:</label>
+        <input type="text" id="input2" name="input2" />
+        <button type="button" id="button2">Button 2</button>
+      </div>
+    </form>
+
+    <script>
+      // JavaScript to update the button text
+      const button1 = document.getElementById('button1')
+      const input1 = document.getElementById('input1')
+      const button2 = document.getElementById('button2')
+      const input2 = document.getElementById('input2')
+
+      function insertTextContent(element, text) {
+        element.textContent = text
+      }
+
+      input1.addEventListener('input', function () {
+        insertTextContent(button1, this.value)
+      })
+
+      function debounce(func) {
+        let timeout
+        return function () {
+          clearTimeout(timeout)
+          timeout = setTimeout(() => {
+            func.apply(this, arguments)
+          }, 1500)
+        }
+      }
+
+      const debouncedInsertTextContent = debounce(insertTextContent)
+
+      input2.addEventListener('input', function () {
+        debouncedInsertTextContent(button2, this.value)
+      })
+    </script>
+  </body>
+</html>
