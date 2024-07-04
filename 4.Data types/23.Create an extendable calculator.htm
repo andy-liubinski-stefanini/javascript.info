@@ -1,0 +1,88 @@
+<!-- // Create a constructor function Calculator that creates “extendable” calculator objects.
+
+// The task consists of two parts.
+
+//     First, implement the method calculate(str) that takes a string like "1 + 2" in the format “NUMBER operator NUMBER” (space-delimited) and returns the result. Should understand plus + and minus -.
+
+//     Usage example:
+
+// let calc = new Calculator;
+
+// alert( calc.calculate("3 + 7") ); // 10
+
+// Then add the method addMethod(name, func) that teaches the calculator a new operation. It takes the operator name and the two-argument function func(a,b) that implements it.
+
+// For instance, let’s add the multiplication *, division / and power **:
+
+//     let powerCalc = new Calculator;
+//     powerCalc.addMethod("*", (a, b) => a * b);
+//     powerCalc.addMethod("/", (a, b) => a / b);
+//     powerCalc.addMethod("**", (a, b) => a ** b);
+
+//     let result = powerCalc.calculate("2 ** 3");
+//     alert( result ); // 8
+
+//     No parentheses or complex expressions in this task.
+//     The numbers and the operator are delimited with exactly one space.
+//     There may be error handling if you’d like to add it. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // FIRST PART
+
+      function Calculator(params) {
+        this.methodList = {
+          '+': (a, b) => a + b,
+          '-': (a, b) => a - b,
+        }
+
+        this.calculate = function (string) {
+          const calcArr = string.split(' ')
+          const a = +calcArr[0]
+          const operator = calcArr[1]
+          const b = +calcArr[2]
+          if (isNaN(a) || isNaN(b) || !this.methodList[operator]) {
+            return `Invalid calculation`
+          } else {
+            return this.methodList[operator](a, b)
+          }
+        }
+        // SECOND PART
+        this.addMethod = function (name, func) {
+          this.methodList[name] = func
+        }
+      }
+
+      // let calc = new Calculator()
+
+      // alert(
+      //   calc.calculate(
+      //     prompt(
+      //       `Enter a math problem in form of a + b or a - b(separate with blankspace))`
+      //     )
+      //   )
+      // )
+
+      // SECOND PART
+      let powerCalc = new Calculator()
+      powerCalc.addMethod('*', (a, b) => a * b)
+      powerCalc.addMethod('/', (a, b) => a / b)
+      powerCalc.addMethod('**', (a, b) => a ** b)
+
+      alert(
+        powerCalc.calculate(
+          prompt(
+            `Enter a math problem in form of a + b(use +, -,*,/ ,** and separate with blankspace))`
+          )
+        )
+      )
+    </script>
+  </body>
+</html>
