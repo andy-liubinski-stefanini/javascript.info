@@ -68,7 +68,7 @@ class Clock {
       .replace('m', mins)
       .replace('s', secs)
 
-    return output /// FIRST VARIATION WAS CREATING A SIDEFFECT. I'VE MADE IT INTO A RETURN
+    console.log(output)
   }
 
   stop() {
@@ -82,19 +82,17 @@ class Clock {
 }
 
 class ExtendedClock extends Clock {
-  constructor({ template }) {
+  constructor({ template, precision = 1000 }) {
     super({ template })
+    this.precision = precision
   }
-  render() {
-    let date = new Date()
-
-    super.render()
-    let millisecs = date.getMilliseconds()
-    let output = this.output.replace('ms', millisecs)
+  start() {
+    this.render()
+    this.timer = setInterval(() => {
+      this.render()
+    }, this.precision)
   }
 }
 
-let extendedClock = new ExtendedClock({
-  template: 'h:m:s:ms',
-})
-extendedClock.start()
+let clock = new ExtendedClock({ template: 'h:m:s', precision: 2000 })
+clock.start()
