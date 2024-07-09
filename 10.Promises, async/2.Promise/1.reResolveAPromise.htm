@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // https://javascript.info/task/re-resolve
+
+      // What’s the output of the code below?
+
+      // let promise = new Promise(function(resolve, reject) {
+      //   resolve(1);
+
+      //   setTimeout(() => resolve(2), 1000);
+      // });
+
+      // promise.then(alert);
+
+      let promise = new Promise(function (resolve, reject) {
+        resolve(1);
+
+        setTimeout(() => resolve(2), 1000); // ITS IMPOSSIBLE TO RESOLVE MORE THAN ONCE. THIS IS IGNORED
+      });
+
+      promise.then(alert);
+    </script>
+  </body>
+</html>
